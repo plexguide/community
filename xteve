@@ -1,23 +1,24 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-zammad () {
+xteve () {
 
 container_reset
 # VARIABLES ####################################################################
 pgrole="zammad"
-port_inside01="80"
-port_outside01="8777"
-traefik_extport="8777"
+port_inside01="34400"
+port_outside01="34400"
+traefik_extport="34400"
 
 container_path /etc/localtime /etc/localtime:ro
-container_path /pg/data/$pgrole /config
-container_path /pg /pg
+container_path /pg/data/$pgrole/app/tmp /tmp/xteve:rw
+container_path /pg/data/$pgrole/app/guide2go /home/xteve/guide2go/conf:rw
 
-container_permissions PUID 1000
-container_permissions PGID 1000
+container_permissions XTEVE_UID 1000
+container_permissions XTEVE_GID 1000
+container_permissions XTEVE_BRANCH beta
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
-zammad/zammad latest
+dnsforge/xteve latest
 EOF
 # YML EXPORT ###################################################################
 container_core
