@@ -4,7 +4,7 @@ xteve () {
 
 container_reset
 # VARIABLES ####################################################################
-pgrole="zammad"
+pgrole="xteve"
 port_inside01="34400"
 port_outside01="34400"
 traefik_extport="34400"
