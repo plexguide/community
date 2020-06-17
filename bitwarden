@@ -19,13 +19,14 @@ cat <<- EOF > "/pg/images/$pgrole.images"
 bitwardenrs/server latest
 EOF
 # CONFIG FILE ##################################################################
-if [[ ! -e "/pg/data/$pgrole/.env" ]]; then
+common_fceate_silent /pg/data/$pgrole/env
+if [[ ! -e "/pg/data/$pgrole/env/.env" ]]; then
 # MISC TASKS ###################################################################
 securekey=$(/usr/bin/openssl rand -base64 48)
 traefik_menu_start_setup
 common_main /pg/data/$pgrole/cname.traefik "$app" cname_fill
 # ENV EXPORT ###################################################################
-cat <<- EOF > "/pg/data/$pgrole/env"
+cat <<- EOF > "/pg/data/$pgrole/env/.env"
 ## Bitwarden_RS Configuration File
 ## Uncomment any of the following lines to change the defaults
 
