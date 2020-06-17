@@ -9,7 +9,7 @@ port_inside01="4040"
 port_outside01="4040"
 traefik_extport="4040"
 
-container_path /etc/localtime/ /etc/localtime:ro
+container_path /etc/localtime /etc/localtime:ro
 container_path /proc /host/proc:ro
 container_path /var/run/docker.sock /var/run/docker.sock
 container_path /pg/data/$pgrole /data
