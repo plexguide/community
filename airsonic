@@ -1,0 +1,46 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+bitwarden () {
+
+container_reset
+# VARIABLES ####################################################################
+pgrole="airsonic"
+port_inside01="4040"
+port_outside01="4040"
+traefik_extport="4040"
+
+container_path /etc/localtime/ etc/localtime:ro
+container_path /proc /host/proc:ro
+container_path /var/run/docker.sock /var/run/docker.sock
+container_path /pg/data/$pgrole /data
+container_path /pg/data/$pgrole/playlists /airsonic/playlists
+container_path /pg/data/$pgrole/podcasts /airsonic/podcasts
+container_path /pg /pg
+
+container_permissions PUID 1000
+container_permissions PGID 1000
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+linuxserver/airsonic latest
+EOF
+# YML EXPORT ###################################################################
+container_core
+cat <<- EOF > "/pg/apps/$pgrole.yml"
+$container_header
+### ALIGN WITH THE A ################################## START - EXTRAS #########
+
+####### ALIGN WITH THE A ############################## CORE ###################
+        $container_start
+        published_ports:
+          - '${portcheck_add}${port_outside01}:${port_inside01}'
+        env:
+          $container_permissions
+        labels:
+        $container_traefik
+        $container_oddball
+        $container_ending
+
+### ALIGN WITH THE A ################################## END - EXTRAS ###########
+
+EOF
+}
