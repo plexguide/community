@@ -56,7 +56,7 @@ cat <<- EOF > "/pg/data/$pgrole/env/.env"
 ## Enable extended logging
 ## This shows timestamps and allows logging to file and to syslog
 ### To enable logging to file, use the LOG_FILE env variable
-### To enable syslog, you need to compile with `cargo build --features=enable_syslog'
+### To enable syslog, you need to compile with 'cargo build --features=enable_syslog'
 # EXTENDED_LOGGING=true
 
 ## Logging to file
