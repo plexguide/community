@@ -19,7 +19,7 @@ cat <<- EOF > "/pg/images/$pgrole.images"
 bitwardenrs/server latest
 EOF
 # CONFIG FILE ##################################################################
-common_fceate_silent /pg/data/$pgrole/env
+common_fcreate_silent /pg/data/$pgrole/env
 if [[ ! -e "/pg/data/$pgrole/env/.env" ]]; then
 # MISC TASKS ###################################################################
 securekey=$(/usr/bin/openssl rand -base64 48)
