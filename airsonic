@@ -1,6 +1,6 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-bitwarden () {
+airsonic () {
 
 container_reset
 # VARIABLES ####################################################################
