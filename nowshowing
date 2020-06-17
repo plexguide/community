@@ -4,7 +4,7 @@ nowshowing () {
 
 container_reset
 # VARIABLES ####################################################################
-pgrole="speedtest"
+pgrole="nowshowing"
 port_inside01="6878"
 port_outside01="6878"
 traefik_extport="6878"
