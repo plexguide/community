@@ -1,13 +1,13 @@
 #!/bin/bash
 ############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
-bazarr () {
+beeets () {
 
 container_reset
 # VARIABLES ####################################################################
-pgrole="bazarr"
-port_inside01="6767"
-port_outside01="6767"
-traefik_extport="6767"
+pgrole="beets"
+port_inside01="8337"
+port_outside01="8337"
+traefik_extport="8337"
 
 container_path /etc/localtime /etc/localtime:ro
 container_path /pg/data/$pgrole /config
