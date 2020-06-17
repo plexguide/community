@@ -5,9 +5,9 @@ bitwarden () {
 container_reset
 # VARIABLES ####################################################################
 pgrole="bitwarden"
-port_inside01="80"
-port_outside01="2489"
-traefik_extport="2489"
+port_inside01="6423"
+port_outside01="6423"
+traefik_extport="6423"
 
 container_path /pg/data/$pgrole /data
 container_path /pg/data/$pgrole/env /.env
