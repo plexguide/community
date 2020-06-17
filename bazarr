@@ -11,7 +11,7 @@ traefik_extport="6767"
 
 container_path /etc/localtime /etc/localtime:ro
 container_path /pg/data/$pgrole /config
-container_path /etc/localtime /etc/localtime:ro
+container_path /pg /pg
 
 container_permissions PUID 1000
 container_permissions PGID 1000
