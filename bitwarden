@@ -5,7 +5,7 @@ bitwarden () {
 container_reset
 # VARIABLES ####################################################################
 pgrole="bitwarden"
-port_inside01="6423"
+port_inside01="80"
 port_outside01="6423"
 traefik_extport="6423"
 
