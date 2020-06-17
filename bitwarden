@@ -19,7 +19,7 @@ cat <<- EOF > "/pg/images/$pgrole.images"
 bitwardenrs/server latest
 EOF
 # CONFIG FILE ##################################################################
-if [[ ! -e "/pg/data/$pgrole/env" ]]; then
+if [[ ! -e "/pg/data/$pgrole/.env" ]]; then
 # MISC TASKS ###################################################################
 securekey=$(/usr/bin/openssl rand -base64 48)
 traefik_menu_start_setup
