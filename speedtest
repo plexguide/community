@@ -1,0 +1,41 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+speedtest () {
+
+container_reset
+# VARIABLES ####################################################################
+pgrole="speedtest"
+port_inside01="80"
+port_outside01="8223"
+traefik_extport="8223"
+
+container_path /var/run/docker.sock /var/run/docker.sock
+
+container_permissions PUID 1000
+container_permissions PGID 1000
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+adolfintel/speedtest latest
+EOF
+# YML EXPORT ###################################################################
+container_core
+cat <<- EOF > "/pg/apps/$pgrole.yml"
+$container_header
+### ALIGN WITH THE A ################################## START - EXTRAS #########
+
+####### ALIGN WITH THE A ############################## CORE ###################
+        $container_start
+        published_ports:
+          - '${portcheck_add}${port_outside01}:${port_inside01}'
+        env:
+          $container_permissions
+        labels:
+        $container_traefik
+        $container_oddball
+        $container_ending
+
+### ALIGN WITH THE A ################################## END - EXTRAS ###########
+
+### END OF FILE ################################################################
+EOF
+}
