@@ -1,0 +1,50 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+airdcpp () {
+
+container_reset
+# VARIABLES ####################################################################
+pgrole="airdcpp"
+port_inside01="5600"; port_outside01="5600"
+port_inside02="5601"; port_outside02="5601"
+port_inside03="21248"; port_outside03="21248"
+port_inside04="21248"; port_outside04="21248/udp"
+port_inside05="21249"; port_outside05="21249"
+traefik_extport="5601"
+
+container_path /pg/data/$pgrole /.airdcpp
+container_path /pg/complete/airdcpp /Downloads
+container_path /pg /pg
+
+container_permissions UID 1000
+container_permissions GID 1000
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+gangefors/airdcpp-webclient:latest
+EOF
+# YML EXPORT ###################################################################
+container_core
+cat <<- EOF > "/pg/apps/$pgrole.yml"
+$container_header
+### ALIGN WITH THE A ################################## START - EXTRAS #########
+
+####### ALIGN WITH THE A ############################## CORE ###################
+        $container_start
+        published_ports:
+          - '${portcheck_add}${port_outside01}:${port_inside01}'
+          - '${portcheck_add}${port_outside02}:${port_inside02}'
+          - '${port_outside03}:${port_inside03}'
+          - '${port_outside04}:${port_inside05}'
+          - '${port_outside05}:${port_inside06}'
+        env:
+          $container_permissions
+        labels:
+        $container_traefik
+        $container_oddball
+        $container_ending
+
+### ALIGN WITH THE A ################################## END - EXTRAS ###########
+
+### END OF FILE ################################################################
+EOF
+}
