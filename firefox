@@ -16,6 +16,8 @@ container_path /docker/appdata/firefox /config:rw
 # pay attention, to exactly what's required for permissions
 container_permissions PUID 1000
 container_permissions PGID 1000
+
+container_oddball shm-size 2g
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
 jlesage/firefox
