@@ -17,7 +17,6 @@ container_path /docker/appdata/firefox /config:rw
 container_permissions PUID 1000
 container_permissions PGID 1000
 
-container_permissions shm-size 2g
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
 jlesage/firefox
@@ -34,6 +33,7 @@ $container_header
           - '${portcheck_add}${port_outside01}:${port_inside01}'
         env:
           $container_permissions
+          shm-size: 2g
         labels:
         $container_traefik
         $container_oddball
