@@ -1,0 +1,47 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+deemix () {
+
+container_reset                  # do not delete this
+# VARIABLES ####################################################################
+pgrole="deemix"
+port_inside01="6595"; port_outside01="6595"
+traefik_extport="6595"
+
+# PATHS ########################################################################
+# 1st - path on your server # 2nd - path of the container
+container_path / /downloads
+container_path /pg/data/$pgrole /config
+
+# PERMISSIONS ##################################################################
+# pay attention, to exactly what's required for permissions
+container_permissions PUID 1000
+container_permissions PGID 1000
+container_permissions ARL 1234567
+container_permissions UMASK_SET 022
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+bockiii/deemix-docker:latest
+EOF
+# YML EXPORT ###################################################################
+container_core
+cat <<- EOF > "/pg/apps/$pgrole.yml"
+$container_header
+### ALIGN WITH THE A ################################## START - EXTRAS #########
+
+####### ALIGN WITH THE A ############################## CORE ###################
+        $container_start
+        published_ports:
+          - '${portcheck_add}${port_outside01}:${port_inside01}'
+        env:
+          $container_permissions
+        labels:
+        $container_traefik
+        $container_oddball
+        $container_ending
+
+### ALIGN WITH THE A ################################## END - EXTRAS ###########
+
+### END OF FILE ################################################################
+EOF
+}
