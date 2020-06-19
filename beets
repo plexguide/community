@@ -17,8 +17,8 @@ container_permissions PUID 1000
 container_permissions PGID 1000
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
-linuxserver/beets latest
-linuxserver/beets nightly
+linuxserver/beets:latest
+linuxserver/beets:nightly
 EOF
 # YML EXPORT ###################################################################
 container_core

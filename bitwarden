@@ -16,7 +16,7 @@ container_permissions PUID 1000
 container_permissions PGID 1000
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
-bitwardenrs/server latest
+bitwardenrs/server:latest
 EOF
 # CONFIG FILE ##################################################################
 common_fcreate_silent /pg/data/$pgrole/env

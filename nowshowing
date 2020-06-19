@@ -16,7 +16,7 @@ container_permissions PUID 1000
 container_permissions PGID 1000
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
-ninthwalker/nowshowing v2
+ninthwalker/nowshowing:v2
 EOF
 # YML EXPORT ###################################################################
 container_core

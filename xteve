@@ -18,7 +18,7 @@ container_permissions XTEVE_GID 1000
 container_permissions XTEVE_BRANCH beta
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
-dnsforge/xteve latest
+dnsforge/xteve:latest
 EOF
 # YML EXPORT ###################################################################
 container_core

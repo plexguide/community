@@ -28,8 +28,8 @@ container_permissions PGID 1000
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 # how users select an image; the 1st image is the default. If only 1, it's ok!
 cat <<- EOF > "/pg/images/$pgrole.images"
-linuxserver/nzbget latest
-linuxserver/nzbget testing
+linuxserver/nzbget:latest
+linuxserver/nzbget:testing
 EOF
 
 # YML EXPORT ###################################################################

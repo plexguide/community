@@ -16,8 +16,8 @@ container_permissions PUID 1000
 container_permissions PGID 1000
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
-linuxserver/organizr latest
-organizrtools/organizr-v2 plex
+linuxserver/organizr:latest
+organizrtools/organizr-v2:plex
 EOF
 # YML EXPORT ###################################################################
 container_core

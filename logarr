@@ -21,8 +21,8 @@ container_permissions PUID 1000
 container_permissions PGID 1000
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
-monitorr/logarr latest
-monitorr/logarr develop
+monitorr/logarr:latest
+monitorr/logarr:develop
 EOF
 # YML EXPORT ###################################################################
 container_core

@@ -18,7 +18,7 @@ container_permissions PUID 1000
 container_permissions PGID 1000
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
-gitea/gitea latest
+gitea/gitea:latest
 EOF
 # YML EXPORT ###################################################################
 container_core
