@@ -17,6 +17,8 @@ container_path /dev/shm /dev/shm
 container_permissions PUID 1000
 container_permissions PGID 1000
 
+container_oddball HUB_HOST selenium-hub
+container_oddball HUB_PORT 4444
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
 selenium/standalone-chrome
