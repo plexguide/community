@@ -12,8 +12,8 @@ port_inside04="21248/udp"; port_outside04="21248"
 port_inside05="21249"; port_outside05="21249"
 traefik_extport="5601"
 
-container_path /pg/data/$pgrole /.airdcpp
-container_path /pg/complete/airdcpp /Downloads
+container_path /pg/data/$pgrole /.$pgrole
+container_path /pg/complete/$pgrole /Downloads
 container_path /pg /pg
 
 container_permissions UID 1000
