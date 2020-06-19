@@ -11,12 +11,11 @@ traefik_extport="5800"
 # PATHS ########################################################################
 # 1st - path on your server # 2nd - path of the container
 container_path /docker/appdata/firefox /config:rw
-    
+
 # PERMISSIONS ##################################################################
 # pay attention, to exactly what's required for permissions
 container_permissions PUID 1000
 container_permissions PGID 1000
-container_permissions shm-size 2g
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
 jlesage/firefox
