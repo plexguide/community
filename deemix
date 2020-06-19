@@ -21,7 +21,7 @@ container_permissions ARL 1234567
 container_permissions UMASK_SET 022
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
-bockiii/deemix-docker:latest
+registry.gitlab.com/bockiii/deemix-docker
 EOF
 # YML EXPORT ###################################################################
 container_core
