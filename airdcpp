@@ -15,9 +15,6 @@ traefik_extport="5601"
 container_path /pg/data/$pgrole /.$pgrole
 container_path /pg/complete/$pgrole /Downloads
 container_path /pg /pg
-
-container_permissions UID 1000
-container_permissions GID 1000
 # IMAGES EXPORT - 1ST IS DEFAULT ###############################################
 cat <<- EOF > "/pg/images/$pgrole.images"
 gangefors/airdcpp-webclient:latest
