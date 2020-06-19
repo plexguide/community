@@ -8,7 +8,7 @@ pgrole="airdcpp"
 port_inside01="5600"; port_outside01="5600"
 port_inside02="5601"; port_outside02="5601"
 port_inside03="21248"; port_outside03="21248"
-port_inside04="21248/udp"; port_outside04="21248"
+port_inside04="21248"; port_outside04="21248/udp"
 port_inside05="21249"; port_outside05="21249"
 traefik_extport="5601"
 
@@ -34,8 +34,8 @@ $container_header
           - '${portcheck_add}${port_outside01}:${port_inside01}'
           - '${portcheck_add}${port_outside02}:${port_inside02}'
           - '${port_outside03}:${port_inside03}'
-          - '${port_outside04}:${port_inside05}'
-          - '${port_outside05}:${port_inside06}'
+          - '${port_outside04}:${port_inside04}'
+          - '${port_outside05}:${port_inside05}'
         env:
           $container_permissions
         labels:
