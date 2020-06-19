@@ -1,0 +1,46 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+firefox () {
+
+container_reset                  # do not delete this
+# VARIABLES ####################################################################
+pgrole="firefox"
+port_inside01="5800"; port_outside01="5800"
+traefik_extport="5800"
+
+# PATHS ########################################################################
+# 1st - path on your server # 2nd - path of the container
+container_path /docker/appdata/firefox /config:rw
+
+# PERMISSIONS ##################################################################
+# pay attention, to exactly what's required for permissions
+container_permissions PUID 1000
+container_permissions PGID 1000
+
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+jlesage/firefox
+EOF
+# YML EXPORT ###################################################################
+container_core
+cat <<- EOF > "/pg/apps/$pgrole.yml"
+$container_header
+### ALIGN WITH THE A ################################## START - EXTRAS #########
+
+####### ALIGN WITH THE A ############################## CORE ###################
+        $container_start
+        published_ports:
+          - '${portcheck_add}${port_outside01}:${port_inside01}'
+        env:
+          $container_permissions
+          shm-size: 2g
+        labels:
+        $container_traefik
+        $container_oddball
+        $container_ending
+
+### ALIGN WITH THE A ################################## END - EXTRAS ###########
+
+### END OF FILE ################################################################
+EOF
+}
