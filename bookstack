@@ -1,0 +1,43 @@
+#!/bin/bash
+############# https://github.com/plexguide/PlexGuide.com/graphs/contributors ###
+bookstack () {
+
+# NOTES: NOT COMPLETE, ADD DATABASE ROLE
+
+container_reset
+# VARIABLES ####################################################################
+pgrole="bookstack"
+port_inside01="443"
+port_outside01="6875"
+traefik_extport="6875"
+
+container_path /pg/data/$pgrole /config
+
+container_permissions PUID 1000
+container_permissions PGID 1000
+# IMAGES EXPORT - 1ST IS DEFAULT ###############################################
+cat <<- EOF > "/pg/images/$pgrole.images"
+linuxserver/bookstack:latest
+EOF
+# YML EXPORT ###################################################################
+container_core
+cat <<- EOF > "/pg/apps/$pgrole.yml"
+$container_header
+### ALIGN WITH THE A ################################## START - EXTRAS #########
+
+####### ALIGN WITH THE A ############################## CORE ###################
+        $container_start
+        published_ports:
+          - '${portcheck_add}${port_outside01}:${port_inside01}'
+        env:
+          $container_permissions
+        labels:
+        $container_traefik
+        $container_oddball
+        $container_ending
+
+### ALIGN WITH THE A ################################## END - EXTRAS ###########
+
+### END OF FILE ################################################################
+EOF
+}
