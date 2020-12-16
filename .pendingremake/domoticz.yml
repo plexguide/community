@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Title:      PlexGuide (linuxserver/domoticz)
+# Title:      PlexGuide (ghcr.io/linuxserver/domoticz)
 # Author(s):  Admin9705
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
@@ -20,7 +20,7 @@
         intport3: '1443/tcp'
         extport3: '1443'
 		
-        image: 'linuxserver/domoticz:stable'
+        image: 'ghcr.io/linuxserver/domoticz:stable'
 
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'

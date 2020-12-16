@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Title:      PlexGuide (linuxserver/kodi-headless)
+# Title:      PlexGuide (ghcr.io/linuxserver/kodi-headless)
 # Author(s):  PlexGuide
 # URL:        https://plexguide.com - http://github.plexguide.com
 # GNU:        General Public License v3.0
@@ -19,7 +19,7 @@
         extport2: '9099'
         intport3: '9777'
         extport3: '9777/udp'
-        image: 'linuxserver/kodi-headless:latest'
+        image: 'ghcr.io/linuxserver/kodi-headless:latest'
 
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
