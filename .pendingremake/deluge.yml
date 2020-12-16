@@ -19,7 +19,7 @@
         extport2: '58846'
         intport3: '58946'
         extport3: '58946'
-        image: 'linuxserver/deluge'
+        image: 'ghcr.io/linuxserver/deluge'
 
     # CORE (MANDATORY) ############################################################
     - name: 'Including cron job'
